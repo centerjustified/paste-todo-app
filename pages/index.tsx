@@ -6,6 +6,7 @@ import { Paragraph } from "@twilio-paste/core/paragraph";
 import { Separator } from "@twilio-paste/core/separator";
 import type { NextPage } from "next";
 import Head from "next/head";
+import { NewToDoForm } from "../forms/newToDo";
 
 const Home: NextPage = () => {
   return (
@@ -57,6 +58,7 @@ const Home: NextPage = () => {
           <Paragraph>Instantly deploy your Next.js site to a public URL with Vercel.</Paragraph>
         </ListItem>
       </UnorderedList>
+      <NewToDoForm />
     </Box>
   );
 };
