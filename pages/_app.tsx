@@ -1,11 +1,14 @@
 import { Theme } from "@twilio-paste/core/theme";
 import type { AppProps, NextWebVitalsMetric } from "next/app";
+import { StrictMode } from "react";
 
 const MyApp: React.FC<React.PropsWithChildren<AppProps>> = ({ Component, pageProps }) => {
   return (
-    <Theme.Provider theme="default">
-      <Component {...pageProps} />
-    </Theme.Provider>
+    <StrictMode>
+      <Theme.Provider theme="default">
+        <Component {...pageProps} />
+      </Theme.Provider>
+    </StrictMode>
   );
 };
 
