@@ -55,19 +55,32 @@ export const NewToDoForm = ({isOpen, handleClose}:{isOpen: boolean, handleClose:
               placeholder="Add a new task to do"
               onChange={handleChange}
               value={formValues.toDoText}
+              required
+            />
+          </FormControl>
+          <FormControl>
+            <Label htmlFor="task-text">Location</Label>
+            <Input
+              type="text"
+              id="task-text"
+              name="location"
+              placeholder="Where is this task have to be done?"
+              onChange={handleChange}
+              value={formValues.location}
+              required
             />
           </FormControl>
           <FormControl>
             <Label htmlFor="priority">Priority</Label>
-            <Select id="priority" name="priority" value={formValues.priority} onChange={handleChange}>
+            <Select id="priority" name="priority" value={formValues.priority} onChange={handleChange} required>
               <Option value="10">High</Option>
               <Option value="20">Normal</Option>
               <Option value="30">Low</Option>
             </Select>
           </FormControl>
           <FormControl>
-            <Label htmlFor="date-due">Date Due</Label>
-            <DatePicker id="date-due" onChange={handleChange} />
+            <Label htmlFor="date-due">Due date</Label>
+            <DatePicker id="date-due" name="dateDue" onChange={handleChange} required />
           </FormControl>
           </Form>
           <ModalFooter>
