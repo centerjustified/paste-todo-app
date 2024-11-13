@@ -6,30 +6,19 @@ import { Input } from "@twilio-paste/core/input"
 import { Button } from "@twilio-paste/core/button"
 import { useState } from "react";
 import { Modal, ModalHeader, ModalHeading, ModalBody, ModalFooter} from "@twilio-paste/core"
+import { Priority, ToDo } from "../types/todo";
 
-enum Priority {
-  High = "10",
-  Normal = "20",
-  Low = "30"
-}
-
-interface FormValues {
-  toDoText: string;
-  priority: Priority;
-  location: string;
-  dateDue: Date | null;
-}
-
-const defaultFormValues: FormValues = {
+const defaultFormValues: ToDo = {
+  id: "",
   toDoText: "",
   priority: Priority.Normal,
   location: "",
-  dateDue: null,
+  dueDate: null,
 };
 
 export const NewToDoForm = ({isOpen, handleClose}:{isOpen: boolean, handleClose: () => void}) => {
 
-  const [formValues, setFormValues] = useState<FormValues>(defaultFormValues);
+  const [formValues, setFormValues] = useState<ToDo>(defaultFormValues);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
