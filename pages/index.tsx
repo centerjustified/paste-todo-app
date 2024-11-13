@@ -15,6 +15,10 @@ const Home: NextPage = () => {
     setToDoList([...toDoList, toDo]);
   }
 
+  const handleCompleteToDo = (toDo: ToDo) => {
+    setToDoList(toDoList.filter((t) => t.id !== toDo.id));
+  }
+
   return (
     <Box display="flex" width="100%" justifyContent="center" paddingX="space10">
       <Box paddingTop="space130" paddingBottom="space160" width="size100" maxWidth="size100">
@@ -27,7 +31,7 @@ const Home: NextPage = () => {
           </Box>
         </PageHeader>
         <Box display="flex" flexDirection="column" rowGap="space130">
-          <ToDoTable toDoList={toDoList} />
+          <ToDoTable toDoList={toDoList} handleCompleteToDo={handleCompleteToDo} />
           <NewToDoForm isOpen={isOpen} handleClose={handleClose} handleAddToDo={handleAddToDo} />
         </Box>
       </Box>
