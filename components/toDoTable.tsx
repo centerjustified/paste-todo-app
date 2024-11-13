@@ -18,7 +18,7 @@ const ToDoTable = ({ toDoList }: { toDoList: ToDo[] }) => {
             <DataGridCell>{toDo.toDoText}</DataGridCell>
             <DataGridCell>{toDo.location}</DataGridCell>
             <DataGridCell>{toDo.priority}</DataGridCell>
-            <DataGridCell>{toDo.dueDate?.toLocaleDateString()}</DataGridCell>
+            <DataGridCell>{new Date(toDo.dueDate).toLocaleDateString()}</DataGridCell>
           </DataGridRow>
         ))}
       </DataGridBody>

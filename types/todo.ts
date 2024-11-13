@@ -9,5 +9,5 @@ export type ToDo = {
   toDoText: string;
   location: string;
   priority: Priority;
-  dueDate: Date | null;
+  dueDate: Date;
 };

@@ -13,7 +13,7 @@ const defaultFormValues: ToDo = {
   toDoText: "",
   priority: Priority.Normal,
   location: "",
-  dueDate: null,
+  dueDate: new Date(),
 };
 
 export const NewToDoForm = ({isOpen, handleClose, handleAddToDo}:{isOpen: boolean, handleClose: () => void, handleAddToDo: (toDo: ToDo) => void}) => {
@@ -82,7 +82,7 @@ export const NewToDoForm = ({isOpen, handleClose, handleAddToDo}:{isOpen: boolea
           </FormControl>
           <FormControl>
             <Label htmlFor="date-due">Due date</Label>
-            <DatePicker id="date-due" name="dateDue" onChange={handleChange} required />
+            <DatePicker id="date-due" name="dueDate" onChange={handleChange} required />
           </FormControl>
           <FormActions>
               <Button variant="primary" type="submit">Submit</Button>
