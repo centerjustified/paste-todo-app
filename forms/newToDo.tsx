@@ -9,7 +9,7 @@ import { Modal, ModalHeader, ModalHeading, ModalBody, ModalFooter} from "@twilio
 import { Priority, ToDo } from "../types/todo";
 
 const defaultFormValues: ToDo = {
-  id: "",
+  id: crypto.randomUUID(),
   toDoText: "",
   priority: Priority.Normal,
   location: "",
@@ -47,6 +47,7 @@ export const NewToDoForm = ({isOpen, handleClose}:{isOpen: boolean, handleClose:
       </ModalHeader>
       <ModalBody>
       <Form onSubmit={handleSubmit} >
+          <input type="hidden" name="id" value={formValues.id} />
           <FormControl>
             <Label htmlFor="task-text">What needs to be done?</Label>
             <Input
