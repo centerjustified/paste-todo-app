@@ -9,7 +9,7 @@ import { Modal, ModalHeader, ModalHeading, ModalBody, ModalFooter} from "@twilio
 import { Priority, ToDo } from "../types/todo";
 
 const defaultFormValues: ToDo = {
-  id: crypto.randomUUID(),
+  id: "",
   toDoText: "",
   priority: Priority.Normal,
   location: "",
@@ -32,7 +32,7 @@ export const NewToDoForm = ({isOpen, handleClose, handleAddToDo}:{isOpen: boolea
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleAddToDo(formValues);
+    handleAddToDo({...formValues, id: crypto.randomUUID()});
     handleReset();
   };
 
@@ -47,7 +47,6 @@ export const NewToDoForm = ({isOpen, handleClose, handleAddToDo}:{isOpen: boolea
       </ModalHeader>
       <ModalBody>
       <Form onSubmit={handleSubmit} >
-          <input type="hidden" name="id" value={formValues.id} />
           <FormControl>
             <Label htmlFor="task-text">What needs to be done?</Label>
             <Input
