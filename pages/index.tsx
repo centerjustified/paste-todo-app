@@ -4,9 +4,17 @@ import { NewToDoForm } from "../forms/newToDo";
 import { useModal } from "../hooks/useModal";
 import { Button, Heading, PageHeader } from "@twilio-paste/core";
 import { ToDoTable } from "../components/toDoTable";
+import { useState } from "react";
+import { ToDo } from "../types/todo";
 
 const Home: NextPage = () => {
   const { isOpen, handleOpen, handleClose } = useModal();
+  const [toDoList, setToDoList] = useState<ToDo[]>([]);
+
+  const handleAddToDo = (toDo: ToDo) => {
+    setToDoList([...toDoList, toDo]);
+  }
+
   return (
     <Box display="flex" width="100%" justifyContent="center" paddingX="space10">
       <Box paddingTop="space130" paddingBottom="space160" width="size100" maxWidth="size100">
@@ -19,8 +27,8 @@ const Home: NextPage = () => {
           </Box>
         </PageHeader>
         <Box display="flex" flexDirection="column" rowGap="space130">
-          <ToDoTable />
-          <NewToDoForm isOpen={isOpen} handleClose={handleClose} />
+          <ToDoTable toDoList={toDoList} />
+          <NewToDoForm isOpen={isOpen} handleClose={handleClose} handleAddToDo={handleAddToDo} />
         </Box>
       </Box>
     </Box>

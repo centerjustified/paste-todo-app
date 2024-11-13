@@ -1,6 +1,7 @@
 import { DataGrid, DataGridBody, DataGridCell, DataGridHead, DataGridHeader, DataGridRow } from "@twilio-paste/core";
+import { ToDo } from "../types/todo";
 
-const ToDoTable = () => {
+const ToDoTable = ({ toDoList }: { toDoList: ToDo[] }) => {
   return (
     <DataGrid aria-label="User information table" striped>
       <DataGridHead>
@@ -12,12 +13,14 @@ const ToDoTable = () => {
         </DataGridRow>
       </DataGridHead>
       <DataGridBody>
-        <DataGridRow>
-          <DataGridCell>Create todo application</DataGridCell>
-          <DataGridCell>Home</DataGridCell>
-          <DataGridCell>High</DataGridCell>
-          <DataGridCell>11/13/2024</DataGridCell>
-        </DataGridRow>
+        {toDoList.map((toDo) => (
+          <DataGridRow key={toDo.id}>
+            <DataGridCell>{toDo.toDoText}</DataGridCell>
+            <DataGridCell>{toDo.location}</DataGridCell>
+            <DataGridCell>{toDo.priority}</DataGridCell>
+            <DataGridCell>{toDo.dueDate?.toLocaleDateString()}</DataGridCell>
+          </DataGridRow>
+        ))}
       </DataGridBody>
     </DataGrid>
   );

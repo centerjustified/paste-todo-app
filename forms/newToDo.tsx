@@ -16,7 +16,7 @@ const defaultFormValues: ToDo = {
   dueDate: null,
 };
 
-export const NewToDoForm = ({isOpen, handleClose}:{isOpen: boolean, handleClose: () => void}) => {
+export const NewToDoForm = ({isOpen, handleClose, handleAddToDo}:{isOpen: boolean, handleClose: () => void, handleAddToDo: (toDo: ToDo) => void}) => {
 
   const [formValues, setFormValues] = useState<ToDo>(defaultFormValues);
 
@@ -32,7 +32,7 @@ export const NewToDoForm = ({isOpen, handleClose}:{isOpen: boolean, handleClose:
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formValues);
+    handleAddToDo(formValues);
     handleReset();
   };
 
